@@ -4,12 +4,16 @@ class ClassesRoutesRegister
 {
     public static function register(Router $router)
     {
-        $router->get("classes", function() {
-            return Array( "response" => "get no classes" );
+        $router->get("classes/:id/details", function(Request $req, Response $res) {
+            $res->response(Array("request" => (Array) $req));
+        });
+
+        $router->post("classes/:id/details", function(Request $req, Response $res) {
+            $res->status(201)->response(Array("request" => (Array) $req));
         });
         
-        $router->post("classes", function() {
-            return Array( "response" => "post no classes" );
+        $router->get("classes", function(Request $req, Response $res) {
+            $res->response(Array("request" => (Array) $req));
         });
     }
 }
